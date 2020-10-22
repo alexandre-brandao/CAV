@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alexandre/Documents/CAV/Readfile.cpp
+iostream
+-
+stdio.h
+-
+float.h
+-
+string.h
+-
+sndfile.h
+-
+
+/usr/local/include/sndfile.h
+stdio.h
+-
+stdint.h
+-
+sys/types.h
+-
+

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alexandre/Documents/CAV/convert_to_txt.cpp
+stdio.h
+-
+string.h
+-
+float.h
+-
+sndfile.h
+-
+
+/usr/local/include/sndfile.h
+stdio.h
+-
+stdint.h
+-
+sys/types.h
+-
+

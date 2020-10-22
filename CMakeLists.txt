@@ -20,5 +20,6 @@ target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 add_executable( convert_to_txt convert_to_txt.cpp )
 target_link_libraries(convert_to_txt PRIVATE SndFile::sndfile)
 
-add_executable( Readfile Readfile.cpp)
+
+add_executable( Readfile Readfile.cpp sndFileSupport.cpp)
 target_link_libraries(Readfile PRIVATE SndFile::sndfile)

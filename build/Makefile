@@ -230,6 +230,33 @@ convert_to_txt.cpp.s:
 	$(MAKE) -f CMakeFiles/convert_to_txt.dir/build.make CMakeFiles/convert_to_txt.dir/convert_to_txt.cpp.s
 .PHONY : convert_to_txt.cpp.s
 
+sndFileSupport.o: sndFileSupport.cpp.o
+
+.PHONY : sndFileSupport.o
+
+# target to build an object file
+sndFileSupport.cpp.o:
+	$(MAKE) -f CMakeFiles/Readfile.dir/build.make CMakeFiles/Readfile.dir/sndFileSupport.cpp.o
+.PHONY : sndFileSupport.cpp.o
+
+sndFileSupport.i: sndFileSupport.cpp.i
+
+.PHONY : sndFileSupport.i
+
+# target to preprocess a source file
+sndFileSupport.cpp.i:
+	$(MAKE) -f CMakeFiles/Readfile.dir/build.make CMakeFiles/Readfile.dir/sndFileSupport.cpp.i
+.PHONY : sndFileSupport.cpp.i
+
+sndFileSupport.s: sndFileSupport.cpp.s
+
+.PHONY : sndFileSupport.s
+
+# target to generate assembly for a file
+sndFileSupport.cpp.s:
+	$(MAKE) -f CMakeFiles/Readfile.dir/build.make CMakeFiles/Readfile.dir/sndFileSupport.cpp.s
+.PHONY : sndFileSupport.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -250,6 +277,9 @@ help:
 	@echo "... convert_to_txt.o"
 	@echo "... convert_to_txt.i"
 	@echo "... convert_to_txt.s"
+	@echo "... sndFileSupport.o"
+	@echo "... sndFileSupport.i"
+	@echo "... sndFileSupport.s"
 .PHONY : help
 
 

@@ -3,4 +3,9 @@
 
 CMakeFiles/Readfile.dir/Readfile.cpp.o
  /home/alexandre/Documents/CAV/Readfile.cpp
+ /home/alexandre/Documents/CAV/sndFileSupport.h
+ /usr/local/include/sndfile.h
+CMakeFiles/Readfile.dir/sndFileSupport.cpp.o
+ /home/alexandre/Documents/CAV/sndFileSupport.cpp
+ /home/alexandre/Documents/CAV/sndFileSupport.h
  /usr/local/include/sndfile.h

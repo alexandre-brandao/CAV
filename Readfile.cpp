@@ -7,13 +7,11 @@
 #include <float.h>
 #include <string.h>
 
-//Particular includes
-#include <sndfile.h>
+//Personally created support functions
+#include "sndFileSupport.h"
 
-#define BLOCK_SIZE 4096*16
 
 using namespace std;
-
 
 void print_usage(char* progname) {
     printf("\nUsage [args]:%s [<input file> <output file>]\n");
@@ -23,14 +21,19 @@ void print_usage(char* progname) {
 }
 
 int main( int argc, char* argv[]) {
+    /*program - InputfileName - OutputFileName*/
     char* progname;
     char* infilename;
     char* outfilename;
 
+    /*Sound declarations variables*/
     SNDFILE*  inFILE;
     SNDFILE* outFILE;
     SF_INFO in_sINFO;
     SF_INFO out_sINFO;
+
+    int writecount;
+    float duration;
 
     /*progname and remove bar*/
     progname = strrchr (argv [0], '/') ;
@@ -66,29 +69,40 @@ int main( int argc, char* argv[]) {
 
     memset (&in_sINFO, 0, sizeof (in_sINFO));
 
-    //OPEN file
-    if ((inFILE = sf_open (infilename, SFM_READ, &in_sINFO)) == NULL)
-    {	printf ("Not able to open input file %s.\n", infilename) ;
-        puts (sf_strerror (NULL)) ;
-        return 1 ;
-    }
+    //Open SndFile
+    open_sound_file(&inFILE, infilename, SFM_READ, &in_sINFO);
+    //Print sound settings
+    print_sound_info(infilename, in_sINFO);
 
-    cout << "input:" << infilename << endl;
-    cout << " frames: " << in_sINFO.frames << endl;
-    cout << " samplerate: " << in_sINFO.samplerate << endl;
-    cout << " channels: " << in_sINFO.channels << endl;
-    cout << " format: " << hex << in_sINFO.format << dec << endl;
-    cout << " Buf_LEN: "<< in_sINFO.frames*in_sINFO.channels << endl;
+    cout << "\n Buffer Length: "<< in_sINFO.frames*in_sINFO.channels << endl;
 
     //READ file
+    int buf [in_sINFO.frames * in_sINFO.channels];
+    sf_readf_int(inFILE, buf, in_sINFO.frames);
 
-    float buf [(in_sINFO.frames/2)* in_sINFO.channels];
-    sf_readf_float (inFILE, buf, in_sINFO.frames/2);
 
+    (out_sINFO).channels = 2;
+    (out_sINFO).frames = 0;
+    (out_sINFO).format = SF_FORMAT_WAV | SF_FORMAT_PCM_16 ;
+    (out_sINFO).samplerate = (in_sINFO).samplerate;
+    (out_sINFO).sections = 0;
+    (out_sINFO).seekable = 0;
+
+    /*Open output sound file*/
     //Write file
-    outFILE = sf_open(outfilename, SFM_WRITE, &out_sINFO);
-    out_sINFO = in_sINFO;
-    sf_write_float(outFILE,buf, in_sINFO.frames);
+    open_sound_file(&outFILE, outfilename, SFM_WRITE, &out_sINFO);
+
+    //sf_write_sync(outFILE);
+    writecount = sf_write_int(outFILE, buf, in_sINFO.frames);
+    sf_write_sync(outFILE);
+    sf_error(outFILE);
+    //Save file
+
+    cout << "Writecount: " << writecount << endl;
+    //out_sINFO.frames = in_sINFO.frames;
+    duration= (out_sINFO.frames / out_sINFO.samplerate);
+    print_sound_info(outfilename, out_sINFO);
+    cout << "Duration: " << duration << endl;
 
     sf_close(inFILE);
     sf_close(outFILE);

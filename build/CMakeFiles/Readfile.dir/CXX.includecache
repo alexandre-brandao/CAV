@@ -15,6 +15,16 @@ float.h
 -
 string.h
 -
+sndFileSupport.h
+/home/alexandre/Documents/CAV/sndFileSupport.h
+
+/home/alexandre/Documents/CAV/sndFileSupport.h
+iostream
+-
+stdio.h
+-
+string.h
+-
 sndfile.h
 -
 

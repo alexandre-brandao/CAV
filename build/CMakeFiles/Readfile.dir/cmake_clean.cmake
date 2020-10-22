@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Readfile.dir/Readfile.cpp.o"
+  "CMakeFiles/Readfile.dir/sndFileSupport.cpp.o"
   "Readfile.pdb"
   "Readfile"
 )

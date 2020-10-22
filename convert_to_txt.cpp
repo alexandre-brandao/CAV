@@ -136,6 +136,7 @@ main (int argc, char* argv [])
     } ;
 
     /* Open the output file. */
+
     if ((outfile = fopen (outfilename, "w")) == NULL)
     {	printf ("Not able to open output file %s : %s\n", outfilename, sf_strerror (NULL)) ;
         return 1 ;
